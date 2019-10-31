@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<link href="form_style.css" type="text/css" rel="stylesheet"/>
+		<script type="text/javascript" src="jquery-3.4.1.js"></script>
+		<script type="text/javascript">
+
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			function add_row()
+			{
+
+				$rowno = $("#steps_table tr").length; // get the number of rows so far
+				$rowno = $rowno + 1; 
+				$("#steps_table tr:last").after(
+				 	"<tr id='row" + $rowno + "'>"														+ 
+				 		"<td>"																			+ 
+				 			"<input type='text' name='step[]' placeholder='Add Step'>"				+ 
+				 		"</td>"																			+ 																		+ 
+				 		"<td>"																			+ 
+				 			"<input type='button' value='DELETE' onclick=delete_row('row"+$rowno+"')>"	+
+				 		"</td>"																			+ 
+				 	"</tr>"
+			 	);
+			}
+
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			function delete_row( rowno )
+			{
+				$( '#' + rowno ).remove();
+			}
+	</script>
+	</head>
+	<body>
+		<div id = "wrapper" >
+
+			<div id = "form_div">
+				<form method = "post" action = "kb_detail.php">
+					<table id = "steps_table" align = center>
+						<tr id="row1">
+							<td>
+								<input type="text" name="step[]" placeholder="Enter Step">
+							</td>
+						</tr>
+	  				</table>
+	  				<input type="button" onclick="add_row();" value="ADD Step">
+	  				<input type="submit" name="submit_row" value="SUBMIT">
+	 			</form>
+			</div>
+		</div>
+	</body>
+</html>
